@@ -1,0 +1,275 @@
+/*
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Message Type :");
+        MessageType = Integer.parseInt(sc.next());
+
+        System.out.println("RepeatIndicator :");
+        RepeatIndicator = Integer.parseInt(sc.next());
+
+        System.out.println("MMSI :");
+        MMSI = Integer.parseInt(sc.next());
+
+        System.out.println("NavigationStatus :");
+        NavigationStatus = Integer.parseInt(sc.next());
+
+        System.out.println("ROT :");
+        ROT = Double.parseDouble(sc.next());
+
+        System.out.println("SOG :");
+        SOG = Double.parseDouble(sc.next());
+
+        System.out.println("PositionAccuarcy :");
+        PositionAccuarcy = Integer.parseInt(sc.next());
+
+        System.out.println("Lon :");
+        Lon = Double.parseDouble(sc.next());
+
+        System.out.println("Lat :");
+        Lat =Double.parseDouble(sc.next());
+
+        System.out.println("COG :");
+        COG = Double.parseDouble(sc.next());
+
+        System.out.println("HDG :");
+        HDG = Integer.parseInt(sc.next());
+
+        System.out.println("Time Stamp :");
+        TimeStamp = Integer.parseInt(sc.next());
+
+        System.out.println("Meneuver Indicator :");
+        MeneuverIndicator = Integer.parseInt(sc.next());
+
+        System.out.println("Spare :");
+        Spare = Integer.parseInt(sc.next());
+
+        System.out.println("Raim Flag :");
+        RaimFlag = Integer.parseInt(sc.next());
+
+        System.out.println("Slot State :");
+        SyncState = Integer.parseInt(sc.next());
+
+        System.out.println("Slot TimeOut :");
+        SlotTimeOut = Integer.parseInt(sc.next());
+
+        System.out.println("Slot Offset :");
+        SlotOffset = Integer.parseInt(sc.next());
+        */
+
+
+
+
+
+
+  package org.example;
+
+  import java.util.Random;
+
+  public class RandomAis {
+      private static final Random random = new Random();
+
+      public static void main(String[] args) {
+          // MMSI, 속도, 방향 등의 필드를 생성하여 출력
+          String aivdoMessage = generateAIVDOMessage();
+          // System.out.println("Generated AIVDO Message:");
+          System.out.println(aivdoMessage);
+      }
+
+      public static String generateAIVDOMessage() {
+          StringBuilder message = new StringBuilder();
+
+          //Message Type
+          int MessageType = generateRandomMessageType();
+          message.append(MessageType).append("\n");
+
+          //Repeat indicator
+          int repeatindicator = generateRandomRepeadIndicator();
+          message.append("Repeat Indicator: ").append(repeatindicator).append("\n");
+
+          // MMSI (선박 식별 번호): 9자리 숫자
+          int mmsi = generateRandomMMSI();
+          message.append("MMSI: ").append(mmsi).append("\n");
+
+          //Navigational status
+          int NavigationStatus = generateRandomNavigationStatus();
+          message.append("Repeat Indicator: ").append(NavigationStatus).append("\n");
+
+          //ROT
+          double turnRate = generateRandomTurnRate();
+          message.append("ROT: ").append(String.format("%.1f", turnRate)).append("\n");
+
+          //SOG
+          double speed = generateRandomSpeed();
+          message.append("SOG: ").append(String.format("%.1f", speed)).append("\n");
+
+          //Position accuracy
+          int PositionAccuarcy = generateRandomPositionAccuracy();
+          message.append("Position accuracy: ").append(PositionAccuarcy).append("\n");
+
+          // 위도 및 경도 (도 단위로 랜덤 생성)
+          double latitude = generateRandomLatitude();
+          double longitude = generateRandomLongitude();
+          message.append("Latitude: ").append(String.format("%.9f", latitude)).append("°\n");
+          message.append("Longitude: ").append(String.format("%.9f", longitude)).append("°\n");
+
+          //COG
+          double cog = generateRandomCourse();
+          message.append("COG: ").append(String.format("%.1f", cog)).append("\n");
+
+          //HDG
+          int hdg = generateRandomTrueHeading();
+          message.append("HDG: ").append(hdg).append("\n");
+
+          //Time stamp
+          int timestamp = generateRandomTimeStamp();
+          message.append("Time stamp: ").append(timestamp).append("\n");
+
+          //Meneuver Indicator
+          int meneuverindicator = generateRandomManeuverIndicator();
+          message.append("eneuver Indicator: ").append(meneuverindicator).append("\n");
+
+          //Spare
+          int spare = generateRandomSpare();
+          message.append("Spare: ").append(spare).append("\n");
+
+          //Raim flag
+          int raimflag = generateRandomRaimFlag();
+          message.append("Raim flag: ").append(raimflag).append("\n");
+
+          //Radio status
+          //Sync State
+          int syncstate = generateRandomSyncState();
+          message.append("Sync state: ").append(syncstate).append("\n");
+
+          //Slot Time-out
+          int slottimeout = generateRandomSlotTimeOut();
+          message.append("Slot time out: ").append(slottimeout).append("\n");
+
+          //Slot number(Communication Sub Message)
+          int slotoffset = generateRandomSlotOffset();
+          message.append("Slot offset(Communication Sub Message): ").append(slotoffset).append("\n");
+
+          return message.toString();
+
+
+      }
+
+      static int generateRandomMessageType() {
+          // 메시지 타입 (1-3)
+          return 1 + random.nextInt(3);
+      }
+
+      private static int generateRandomRepeadIndicator() {
+          // Repeat Indicator (0-3)
+          return 0 + random.nextInt(7);
+      }
+
+      private static int generateRandomMMSI() {
+          // 9자리 MMSI 번호 생성 (0-999999999)
+          return 100000000 + random.nextInt(900000000);
+      }
+
+      private static int generateRandomNavigationStatus() {
+          // NavigationStatus (0-7)
+          return 0 + random.nextInt(7);
+      }
+
+      private static double generateRandomTurnRate() {
+          // 회전율은 -126에서 +126까지, 0은 회전하지 않음
+          return - 128.0 + (random.nextDouble() * 128.0);
+      }
+
+      private static double generateRandomSpeed() {
+          // 속도는 0 ~ 102.2 노트 사이의 값을 생성
+          return random.nextDouble() * 102.2; // 0 ~ 102.2
+      }
+
+      private static int generateRandomPositionAccuracy() {
+          //
+          return 0 + random.nextInt(1); // 0 ~ 102.2
+      }
+
+      private static double generateRandomLongitude() {
+          // Lon
+          return 0 + (random.nextDouble() * 180); // -180 ~ +180 사이의 값 생성
+      }
+
+      private static double generateRandomLatitude() {
+          // Lat
+          return 0 + (random.nextDouble() * 90); // -90 ~ +90 사이의 값 생성
+      }
+
+      private static Double generateRandomCourse() {
+          // COG
+          return random.nextDouble() * 360.0;
+      }
+
+      private static int generateRandomTrueHeading () {
+          // Time stamp
+          return random.nextInt(359);
+      }
+
+      private static int generateRandomTimeStamp () {
+          // Time stamp
+          return random.nextInt(59);
+      }
+
+      private static int generateRandomManeuverIndicator() {
+          // Maneuver Indicator
+          return random.nextInt(3);
+      }
+
+      private static int generateRandomSpare () {
+          // Spare
+          return random.nextInt(6);
+      }
+
+      private static int generateRandomRaimFlag () {
+          // RAIM flag
+          return random.nextInt(1);
+      }
+
+      private static int generateRandomSyncState () {
+          // RAIM flag
+          return 0;
+      }
+
+      private static int generateRandomSlotTimeOut () {
+          // RAIM flag
+          return random.nextInt(59);
+      }
+
+      private static int generateRandomSlotOffset () {
+          // RAIM flag
+          return random.nextInt(5000);
+      }
+
+
+
+
+  }
+
+  /*private static void handleClient(Socket socketUser) throws IOException {
+
+          try (BufferedReader reader = new BufferedReader(new InputStreamReader(socketUser.getInputStream()));
+               PrintWriter writer = new PrintWriter(socketUser.getOutputStream(), true)) {
+
+              String line;
+              while ((line = reader.readLine()) != null) {
+                  System.out.println("Client의 메시지 : " + line);
+                  while (true) {
+                      String aisMessage = encode.generateAisResult();
+                      writer.println(aisMessage);
+                  }
+              }
+          } catch (IOException e) {
+              System.err.println("클라이언트와의 통신 중 오류 발생: " + e.getMessage());
+          } finally {
+              try {
+                  socketUser.close();
+              } catch (IOException e) {
+                  e.printStackTrace();
+              }
+          }
+      }
+       */
