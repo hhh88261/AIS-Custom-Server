@@ -74,6 +74,6 @@ String messageType = String.format("%06d", Integer.parseInt(Integer.toBinaryStri
 
 
 
-#Main.java
+# Main.java
 - TCP 소켓 서버를 오픈합니다.
 - 연결된 클라이언트에게 AIS 메시지를 송신합니다.
