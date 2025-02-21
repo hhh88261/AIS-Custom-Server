@@ -4,6 +4,11 @@
 ## 프로젝트 설명
 ais 메시지를 랜덤으로 생성하여 출력하는 서버입니다.
 
+## 참조 사이트
+- AIVDM 신호 설명서    
+https://gpsd.gitlab.io/gpsd/AIVDM.html
+
+
 ## AIS 신호 생성과정
 - 선박의 제원 정보 (MMSI 번호, 위.경도, 뱃머리 방향, 실제로 배가 향하고 있는 방향, 속도 등)
 - 168비트 메시지와 424 비트 메시지로 구성되며 각 필드마다 다양한 비트로 나뉘어져 있습니다.(message ID: 6bits, message Length: 10bits)
