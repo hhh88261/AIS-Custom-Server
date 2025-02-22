@@ -4,10 +4,10 @@
 ## 프로젝트 설명
 ais 메시지를 랜덤으로 생성하여 출력하는 서버입니다.
 
-### 요구사항
+## 요구사항
 - Java 21  
 
-### 실행 가이드
+## 실행 가이드
 
 `git clone https://github.com/hhh88261/AIS-Custom-Server.git`
 
