@@ -4,9 +4,14 @@
 ## 프로젝트 설명
 ais 메시지를 랜덤으로 생성하여 출력하는 서버입니다.
 
-## 참조 사이트
-- AIVDM 신호 설명서    
-https://gpsd.gitlab.io/gpsd/AIVDM.html
+### 요구사항
+- Java 21  
+
+### 실행 가이드
+
+`git clone https://github.com/hhh88261/AIS-Custom-Server.git`
+
+`cd AIS-Custom-Server`
 
 
 ## AIS 신호 생성과정
@@ -82,3 +87,8 @@ String messageType = String.format("%06d", Integer.parseInt(Integer.toBinaryStri
 # Main.java
 - TCP 소켓 서버를 오픈합니다.
 - 연결된 클라이언트에게 AIS 메시지를 송신합니다.
+
+## 참조 사이트
+- AIVDM 신호 설명서    
+https://gpsd.gitlab.io/gpsd/AIVDM.html
+
