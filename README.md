@@ -14,19 +14,20 @@
 
 `cd AIS-Custom-Server`
 
-
 ## AIS 신호 생성과정
 - 선박의 제원 정보 (MMSI 번호, 위.경도, 뱃머리 방향, 실제로 배가 향하고 있는 방향, 속도 등)
 - 168비트 메시지와 424 비트 메시지로 구성됩니다.
 - 일정 비트씩 선박의 정보 및 메시지 정보를 담고 있습니다.(message ID: 6bits, message Length: 10bits, lon : 20bit, speed : 8bit ...)
 
+# Main.java
+- TCP 소켓을 열고 클라이언트에게 AIS 메시지를 전송합니다.
 
 # random.java
-- 각 필드별로 랜덤한 난수를 생성하여 AIVDM 메시지를 만듭니다.
+- 랜덤한 선박 정보와 메시지 정보를 생성합니다.
+- 테스트의 일관성을 위해 일부 필드는 고정된 값을 반환하도록 설정했습니다.  
 
-
-Exmaple
-- 최소 -90도, 최대 90도의 랜덤한 위도값을 설정합니다.
+생성 예시
+1. 최소 -90도, 최대 90도의 랜덤한 위도값을 설정합니다.
 ```
     public double generateRandomLatitude() {
         latitude += (random.nextDouble() - 0.5) * 0.02;
@@ -35,27 +36,24 @@ Exmaple
     }
 ```
 
-- 선박의 속도를 설정합니다.
+2. 선박의 속도를 설정합니다.
 ```
 public double generateRandomSpeed() {
         return 100;
     }
 ```
 
-
 # encode.java
-- 생성된 난수를 AIS 신호로 인코딩
-- 테스트의 일관성을 위해 일부 필드는 고정된 값을 반환하도록 설정했습니다.  
+- random.java에서 생성된 정보를 168 bit의 숫자로 인코딩합니다.
 
-Exmaple
-- 메시지 타입을 6비트로 인코딩 합니다.(type : 1 --> 000001)
+인코딩 예시  
+1. 메시지 타입을 6비트로 인코딩 합니다.(type : 1 --> 000001)
 ```
 String messageType = String.format("%06d", Integer.parseInt(Integer.toBinaryString(MessageType)));
             System.out.println("messageType : " + messageType);  
 ```
 
-
-- 선박의 회전율을 공식에 맞게 계산 후 8비트로 인코딩 합니다.
+2. 선박의 회전율을 공식에 맞게 계산 후 8비트로 인코딩 합니다.
 ```
             // 회전율 / 4.733
             double x = ROT;
@@ -83,12 +81,6 @@ String messageType = String.format("%06d", Integer.parseInt(Integer.toBinaryStri
                 rotBinary = String.format("%8s", Integer.toBinaryString(twosComplementInt)).replace(' ', '0');
             }
 ```
-
-
-
-# Main.java
-- TCP 소켓 서버를 오픈합니다.
-- 연결된 클라이언트에게 AIS 메시지를 송신합니다.
 
 ## 참조 사이트
 - AIVDM 신호 설명서    
