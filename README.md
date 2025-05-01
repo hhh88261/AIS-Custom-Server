@@ -46,7 +46,7 @@ public double generateRandomSpeed() {
 - 생성된 난수를 AIS 신호로 인코딩
   
 
-exmaple
+Exmaple
 - 메시지 타입을 6비트로 인코딩 합니다.(type : 1 --> 000001)
 ```
 String messageType = String.format("%06d", Integer.parseInt(Integer.toBinaryString(MessageType)));
