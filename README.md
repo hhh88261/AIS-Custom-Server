@@ -17,7 +17,8 @@
 
 ## AIS 신호 생성과정
 - 선박의 제원 정보 (MMSI 번호, 위.경도, 뱃머리 방향, 실제로 배가 향하고 있는 방향, 속도 등)
-- 168비트 메시지와 424 비트 메시지로 구성되며 각 필드마다 다양한 비트로 나뉘어져 있습니다.(message ID: 6bits, message Length: 10bits)
+- 168비트 메시지와 424 비트 메시지로 구성됩니다.
+- 일정 비트씩 선박의 정보 및 메시지 정보를 담고 있습니다.(message ID: 6bits, message Length: 10bits, lon : 20bit, speed : 8bit ...)
 
 
 # random.java
