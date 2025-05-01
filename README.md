@@ -24,7 +24,7 @@
 - 각 필드별로 랜덤한 난수를 생성하여 AIVDM 메시지를 만듭니다.
 
 
-exmaple
+Exmaple
 - 최소 -90도, 최대 90도의 랜덤한 위도값을 설정합니다.
 ```
     public double generateRandomLatitude() {
