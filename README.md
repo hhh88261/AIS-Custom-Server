@@ -19,10 +19,10 @@
 - 168비트 메시지와 424 비트 메시지로 구성됩니다.
 - 일정 비트씩 선박의 정보 및 메시지 정보를 담고 있습니다.(message ID: 6bits, message Length: 10bits, lon : 20bit, speed : 8bit ...)
 
-# Main.java
+## Main.java
 - TCP 소켓을 열고 클라이언트에게 AIS 메시지를 전송합니다.
 
-# random.java
+## random.java
 - 랜덤한 선박 정보와 메시지 정보를 생성합니다.
 - 테스트의 일관성을 위해 일부 필드는 고정된 값을 반환하도록 설정했습니다.  
 
@@ -43,7 +43,7 @@ public double generateRandomSpeed() {
     }
 ```
 
-# encode.java
+## encode.java
 - random.java에서 생성된 정보를 168 bit의 숫자로 인코딩합니다.
 
 인코딩 예시  
