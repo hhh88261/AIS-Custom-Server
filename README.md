@@ -21,7 +21,7 @@
 - - -
 
 # 기능 설명
-#### Main.java
+### Main.java
 - TCP 소켓을 열고 클라이언트에게 AIS 메시지를 전송합니다.
 
 ### random.java
@@ -45,7 +45,7 @@ public double generateRandomSpeed() {
     }
 ```
 
-#### encode.java
+### encode.java
 - random.java에서 생성된 정보를 168 bit의 숫자로 인코딩합니다.
 
 인코딩 예시  
