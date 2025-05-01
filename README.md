@@ -27,7 +27,7 @@
 - 테스트의 일관성을 위해 일부 필드는 고정된 값을 반환하도록 설정했습니다.  
 
 생성 예시
-1. 최소 -90도, 최대 90도의 랜덤한 위도값을 설정합니다.
+1. -90도 ~ 90도의 랜덤한 위도값을 설정.
 ```
     public double generateRandomLatitude() {
         latitude += (random.nextDouble() - 0.5) * 0.02;
@@ -36,7 +36,7 @@
     }
 ```
 
-2. 선박의 속도를 설정합니다.
+2. 선박 속도 설정
 ```
 public double generateRandomSpeed() {
         return 100;
@@ -47,13 +47,13 @@ public double generateRandomSpeed() {
 - random.java에서 생성된 정보를 168 bit의 숫자로 인코딩합니다.
 
 인코딩 예시  
-1. 메시지 타입을 6비트로 인코딩 합니다.(type : 1 --> 000001)
+1. 메시지 타입을 6비트로 인코딩(type : 1 --> 000001)
 ```
 String messageType = String.format("%06d", Integer.parseInt(Integer.toBinaryString(MessageType)));
             System.out.println("messageType : " + messageType);  
 ```
 
-2. 선박의 회전율을 공식에 맞게 계산 후 8비트로 인코딩 합니다.
+2. 선박의 회전율을 공식에 맞게 계산 후 8비트로 인코딩.
 ```
             // 회전율 / 4.733
             double x = ROT;
