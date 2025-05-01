@@ -44,7 +44,7 @@ public double generateRandomSpeed() {
 
 # encode.java
 - 생성된 난수를 AIS 신호로 인코딩
-  
+- 테스트의 일관성을 위해 일부 필드는 고정된 값을 반환하도록 설정했습니다.  
 
 Exmaple
 - 메시지 타입을 6비트로 인코딩 합니다.(type : 1 --> 000001)
